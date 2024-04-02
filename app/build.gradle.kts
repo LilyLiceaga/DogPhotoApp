@@ -65,6 +65,7 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
     // Kotlin serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    implementation("io.coil-kt:coil-compose:2.6.0") //Procesar imagenes
 
 
     implementation("androidx.compose.ui:ui")
