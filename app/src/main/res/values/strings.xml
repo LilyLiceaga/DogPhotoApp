@@ -3,4 +3,6 @@
     <string name="placeholder_result">Result of get photos from web!</string>
     <string name="problem_with_connection">Problem with connection</string>
     <string name="cat_image">cat image</string>
+    <string name="dog_image">Dog Image</string>
+    <string name="dog_photo_app">Dog Photo App</string>
 </resources>

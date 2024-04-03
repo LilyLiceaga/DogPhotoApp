@@ -1,5 +1,6 @@
 package com.mexiti.catphotoapp.ui.screens
 
+import android.graphics.drawable.shapes.OvalShape
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,11 +13,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -80,19 +86,30 @@ fun ErrorScreen(modifier: Modifier = Modifier){
 
 @Composable
 fun CatPhotoCard(photo: CatPhoto, modifier: Modifier){
-        AsyncImage(
-            model = ImageRequest.Builder(
-                context = LocalContext.current
+    Card (
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(8.dp),
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ){
+        Box (
+            modifier = Modifier.aspectRatio(1.5f)
+        ){
+            AsyncImage(
+                model = ImageRequest.Builder(
+                    context = LocalContext.current
+                )
+                    .data(photo.url)
+                    .crossfade(true)
+                    .build(),
+                contentDescription = stringResource(R.string.dog_image),
+                modifier = modifier,
+                error = painterResource(id= R.drawable.error_404),
+                placeholder = painterResource(id = R.drawable.carga),
+                contentScale = ContentScale.Crop
             )
-                .data(photo.url)
-                .crossfade(true)
-                .build(),
-            contentDescription = stringResource(R.string.cat_image),
-            modifier = modifier,
-            error = painterResource(id= R.drawable.error_404),
-            placeholder = painterResource(id = R.drawable.carga),
-            contentScale = ContentScale.Crop
-            )
+        }
+    }
+
 }
 
 
@@ -115,6 +132,7 @@ fun PhotoGridScreen(
                 .padding(4.dp)
                 .fillMaxWidth()
                 .aspectRatio(1.5f)
+                .clip(shape = CircleShape)
             )
         }
     }

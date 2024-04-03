@@ -33,7 +33,6 @@ fun CatApp(){
             HomeScreen(catUiState = catViewModel.catUiState, contentPadding = it)
 
         }
-
     }
 }
 
@@ -46,7 +45,7 @@ fun CatTopBar(scrollBehavior: TopAppBarScrollBehavior,modifier:Modifier = Modifi
         scrollBehavior = scrollBehavior,
         title = {
             Text(
-                text = stringResource(id = R.string.app_name),
+                text = stringResource(R.string.dog_photo_app),
                 style = MaterialTheme.typography.headlineMedium
             )
         }

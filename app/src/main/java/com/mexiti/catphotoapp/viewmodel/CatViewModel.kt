@@ -26,7 +26,9 @@ class CatViewModel:ViewModel(){
    private  fun getCatPhotos(){
          viewModelScope.launch {
             catUiState = try {
-                 val listResult = CatApi.retrofitService.getPhotos()
+                 val listResult10 = CatApi.retrofitService.getPhotos()
+                val listResult20 = CatApi.retrofitService.getPhotos()
+                val listResult = listResult10.plus(listResult20)
                 CatUiState.Success(listResult)
              } catch (e: IOException){
                  CatUiState.Error
